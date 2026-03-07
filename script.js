@@ -43,7 +43,21 @@ async function loadCards() {
         const issueCard = document.createElement("div");
         // console.log(issueCard);
         issueCard.innerHTML = `
-        <h2>This is card${card.title}</h2>
+                      <div class="flex justify-between items-center">
+                  <img src="./assets/Open-Status.png" alt="">
+                  <div class="bg-[#FEECEC] text-[#EF4444] w-20 h-8 rounded-full text-center">
+                    <p>High</p>
+                  </div>
+              </div>
+              <h2>Fix navigation menu on mobile devices</h2>
+              <p>The navigation menu doesn't collapse properly on mobile devices...</p>
+              <div class="flex gap-1">
+                <div class="bg-[#FECACA] text-[#EF4444] text-[12px] w-20 h-8 rounded-full text-center px-2 py-[6px]"><i class="fa-solid fa-bug"></i> BUG</div>
+                <div class="bg-[#FFF8DB] text-[#D97706] text-[12px] w-[112px] h-8 rounded-full text-center px-2 py-[6px]"><i class="fa-solid fa-life-ring"></i> Help Wanted</div>
+              </div>
+              <hr>
+              <p>#1by john_doe</p>
+              <p>1/15/2024</p>
         `;
         issuesCards.append(issueCard);
     });
