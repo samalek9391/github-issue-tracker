@@ -41,23 +41,30 @@ async function loadCards() {
     data.data.forEach(card => {
         // console.log(card);
         const issueCard = document.createElement("div");
-        // console.log(issueCard);
+        console.log(issueCard);
         issueCard.innerHTML = `
-                      <div class="flex justify-between items-center">
+                     <div class="bg-[#F8FAFC] p-4 rounded-lg shadow-lg">
+              <div class="border-b-2 border-b-gray-300">
+                <div class="flex justify-between items-center mb-3">
                   <img src="./assets/Open-Status.png" alt="">
                   <div class="bg-[#FEECEC] text-[#EF4444] w-20 h-8 rounded-full text-center">
                     <p>High</p>
                   </div>
               </div>
-              <h2>Fix navigation menu on mobile devices</h2>
-              <p>The navigation menu doesn't collapse properly on mobile devices...</p>
-              <div class="flex gap-1">
-                <div class="bg-[#FECACA] text-[#EF4444] text-[12px] w-20 h-8 rounded-full text-center px-2 py-[6px]"><i class="fa-solid fa-bug"></i> BUG</div>
-                <div class="bg-[#FFF8DB] text-[#D97706] text-[12px] w-[112px] h-8 rounded-full text-center px-2 py-[6px]"><i class="fa-solid fa-life-ring"></i> Help Wanted</div>
+              <div class="mb-4">
+                <h2 class="font-semibold mb-2">Fix navigation menu on mobile devices</h2>
+                <p class="mb-3 text-[#64748B]">The navigation menu doesn't collapse properly on mobile devices...</p>
+                <div class="flex gap-1">
+                  <div class="bg-[#FECACA] text-[#EF4444] text-[12px] w-20 h-8 rounded-full text-center px-2 py-[6px]"><i class="fa-solid fa-bug"></i> BUG</div>
+                  <div class="bg-[#FFF8DB] text-[#D97706] text-[12px] w-[112px] h-8 rounded-full text-center px-2 py-[6px]"><i class="fa-solid fa-life-ring"></i> Help Wanted</div>
+                </div>
               </div>
-              <hr>
-              <p>#1by john_doe</p>
-              <p>1/15/2024</p>
+              </div>
+              
+              <p class="text-[#64748B]">#1by john_doe</p>
+              <p class="text-[#64748B]"> 1/15/2024</p>
+              
+            </div>                     
         `;
         issuesCards.append(issueCard);
     });
