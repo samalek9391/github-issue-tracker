@@ -5,29 +5,76 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>GitHub Issue Tracker</title>
 
-    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./style.css" />
+
+    <!-- Tailwind CSS and DaisyUI -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@5"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
   </head>
   <body>
-    <!-- Login Section -->
-    <div id="signin-section">
-      <h2>Sign In</h2>
+    <div id="signin-section" class="bg-[#F8FAFC] min-h-screen flex items-center justify-center">
+      <div
+        
+        class="card w-full max-w-md bg-white shadow-xl p-6"
+      >
+        <div class="flex justify-center mb-6">
+          <img class="" src="./assets/github-logo.png" alt="" />
+        </div>
 
-      <input id="username" type="text" placeholder="Enter username" />
-      <br /><br />
+        <h2 class="text-center text-[24px] font-semibold">
+          GitHub Issues Tracker
+        </h2>
+        <p class="text-[#64748B] text-center mb-6">
+          Sign in to manage your issues
+        </p>
 
-      <input id="password" type="password" placeholder="Enter password" />
-      <br /><br />
+        <!-- Login Section -->
+        <div id="signin-section" class="flex justify-center">
+          <fieldset class="fieldset w-full p-4">
+            <label class="label text-[#1F2937] font-medium">Username</label>
+            <input
+              id="username"
+              type="email"
+              class="input w-full"
+              placeholder="Enter Username"
+            />
+            <p class="text-[#4A00FF] mb-4">Default: admin</p>
 
-      <button id="signin-btn">Sign In</button>
+            <label class="label text-[#1F2937] font-medium">Password</label>
+            <input
+              id="password"
+              type="password"
+              class="input w-full"
+              placeholder="Enter Password"
+            />
+            <p class="text-[#4A00FF] mb-4">Default: admin123</p>
+
+            <button id="signin-btn" class="btn btn-primary mt-4">
+              Sign In
+            </button>
+          </fieldset>
+        </div>
+        <!-- Divider -->
+        <div class="divider mt-6 mb-6">OR</div>
+
+        <!-- Demo credentials -->
+        <p class="text-gray-500 mb-2 text-center mb-2">Demo Credentials:</p>
+        <div class="bg-gray-100 p-6 rounded-lg text-sm text-center">
+          <p><span class="font-semibold">Username:</span> admin</p>
+          <p><span class="font-semibold">Password:</span> admin123</p>
+        </div>
+      </div>
     </div>
 
-    
     <!-- Dashboard Section -->
-    <div id="dashboard-section" class="hidden">
+    <div id="dashboard-section" class="bg-[#F8FAFC] min-h-screen flex items-center justify-center hidden">
       <h1>Welcome to Dashboard</h1>
     </div>
 
-
-<script src="./script.js"></script>
+    <script src="./script.js"></script>
   </body>
 </html>
