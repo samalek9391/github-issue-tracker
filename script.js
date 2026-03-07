@@ -32,16 +32,20 @@ signBtn.addEventListener("click", function(){
 // loadButtons()
 
 const issuesCards = document.getElementById("issues-cards");
+const allCount = document.getElementById("all-count");
 // console.log(issuesCards);
 
 async function loadCards() {
     const res = await fetch ("https://phi-lab-server.vercel.app/api/v1/lab/issues")
     const data = await res.json();
+    
+    allCount.innerText = data.data.length;
+       
     // console.log(data);
     data.data.forEach(card => {
-        // console.log(card);
+        console.log(card);
         const issueCard = document.createElement("div");
-        console.log(issueCard);
+        // console.log(issueCard);
         issueCard.innerHTML = `
                      <div class="bg-[#F8FAFC] p-4 rounded-lg shadow-lg">
               <div class="border-b-2 border-b-gray-300">
@@ -67,7 +71,9 @@ async function loadCards() {
             </div>                     
         `;
         issuesCards.append(issueCard);
+        
     });
 }
 
-loadCards()
+loadCards();
+
