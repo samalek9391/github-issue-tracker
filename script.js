@@ -1,18 +1,18 @@
 const signBtn = document.getElementById("signin-btn");
-signBtn.addEventListener("click", function(){
-    const userName = document.getElementById("username").value;
-    const password = document.getElementById("password").value;
+signBtn.addEventListener("click", function () {
+  const userName = document.getElementById("username").value;
+  const password = document.getElementById("password").value;
 
-    if(userName === "admin" && password === "admin123"){
-        const signInSection = document.getElementById("signin-section")
-        const dashbordSection = document.getElementById("dashboard-section");
+  if (userName === "admin" && password === "admin123") {
+    const signInSection = document.getElementById("signin-section");
+    const dashbordSection = document.getElementById("dashboard-section");
 
-        signInSection.classList.add("hidden");
-        dashbordSection.classList.remove("hidden");
-    }else{
-        alert("Invalid username or password");
-    }
-})
+    signInSection.classList.add("hidden");
+    dashbordSection.classList.remove("hidden");
+  } else {
+    alert("Invalid username or password");
+  }
+});
 
 // const toggleSection = document.getElementById("toogle-section");
 
@@ -36,44 +36,46 @@ const allCount = document.getElementById("all-count");
 // console.log(issuesCards);
 
 async function loadCards() {
-    const res = await fetch ("https://phi-lab-server.vercel.app/api/v1/lab/issues")
-    const data = await res.json();
-    
-    allCount.innerText = data.data.length;
-       
-    // console.log(data);
-    data.data.forEach(card => {
-        console.log(card);
-        const issueCard = document.createElement("div");
-        // console.log(issueCard);
-        issueCard.innerHTML = `
+  const res = await fetch(
+    "https://phi-lab-server.vercel.app/api/v1/lab/issues",
+  );
+  const data = await res.json();
+
+  allCount.innerText = data.data.length;
+  displayCards(data.data);
+}
+
+function displayCards(cards) {
+  cards.forEach((card) => {
+    console.log(card);
+    const issueCard = document.createElement("div");
+    // console.log(issueCard);
+    issueCard.innerHTML = `
                      <div class="bg-[#F8FAFC] p-4 rounded-lg shadow-lg">
               <div class="border-b-2 border-b-gray-300">
                 <div class="flex justify-between items-center mb-3">
                   <img src="./assets/Open-Status.png" alt="">
                   <div class="bg-[#FEECEC] text-[#EF4444] w-20 h-8 rounded-full text-center">
-                    <p>High</p>
+                    <p>${card.priority}</p>
                   </div>
               </div>
               <div class="mb-4">
-                <h2 class="font-semibold mb-2">Fix navigation menu on mobile devices</h2>
-                <p class="mb-3 text-[#64748B]">The navigation menu doesn't collapse properly on mobile devices...</p>
+                <h2 class="font-semibold mb-2 line-clamp-1">${card.title}</h2>
+                <p class="mb-3 text-[#64748B] line-clamp-2">${card.description}</p>
                 <div class="flex gap-1">
-                  <div class="bg-[#FECACA] text-[#EF4444] text-[12px] w-20 h-8 rounded-full text-center px-2 py-[6px]"><i class="fa-solid fa-bug"></i> BUG</div>
-                  <div class="bg-[#FFF8DB] text-[#D97706] text-[12px] w-[112px] h-8 rounded-full text-center px-2 py-[6px]"><i class="fa-solid fa-life-ring"></i> Help Wanted</div>
+                  <div class="bg-[#FECACA] text-[#EF4444] text-[12px] w-20 h-8 rounded-full text-center px-2 py-[6px]"><i class="fa-solid fa-bug"></i>${card.labels[0]} </div>
+                  <div class="bg-[#FFF8DB] text-[#D97706] text-[12px] w-[112px] h-8 rounded-full text-center px-2 py-[6px]"><i class="fa-solid fa-life-ring"></i>${card.labels[1]}</div>
                 </div>
               </div>
               </div>
               
-              <p class="text-[#64748B]">#1by john_doe</p>
-              <p class="text-[#64748B]"> 1/15/2024</p>
+              <p class="text-[#64748B]">${card.author}</p>
+              <p class="text-[#64748B]">${card.updatedAt}</p>
               
             </div>                     
         `;
-        issuesCards.append(issueCard);
-        
-    });
+    issuesCards.append(issueCard);
+  });
 }
 
 loadCards();
-
