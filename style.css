@@ -1,7 +1,7 @@
 
-.hidden {
+/* .hidden {
     display: none;
-}
+} */
 
 .tab-btn{
 padding:12px 38.5px;
@@ -16,7 +16,7 @@ background:#4A00FF;
 color:white;
 }
 
-.high {
+/* .high {
     background-color: #FEECEC;
     color: #EF4444;
 }
@@ -37,4 +37,4 @@ color:white;
 
 .border-top-red{
     border-top: #EF4444;
-}
+} */

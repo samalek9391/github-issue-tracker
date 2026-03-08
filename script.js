@@ -1,4 +1,7 @@
 const signBtn = document.getElementById("signin-btn");
+const loader = document.getElementById("loader");
+
+// Sign In authintication
 
 signBtn.addEventListener("click", function () {
   const userName = document.getElementById("username").value;
@@ -19,16 +22,37 @@ signBtn.addEventListener("click", function () {
 const issuesCards = document.getElementById("issues-cards");
 const allCount = document.getElementById("all-count");
 
+// async function loadCards() {
+//   const res = await fetch(
+//     "https://phi-lab-server.vercel.app/api/v1/lab/issues",
+//   );
+//   const data = await res.json();
+
+//   allCount.innerText = data.data.length;
+//   displayCards(data.data);
+// }
+
+
+
 async function loadCards() {
+  loader.classList.remove("hidden")
   const res = await fetch(
-    "https://phi-lab-server.vercel.app/api/v1/lab/issues",
+    "https://phi-lab-server.vercel.app/api/v1/lab/issues"
   );
   const data = await res.json();
+  
+  allIssues = data.data;
 
-  allCount.innerText = data.data.length;
-  displayCards(data.data);
+  allCount.innerText = allIssues.length + " Issues";
+  
+  loader.classList.add("hidden");
+
+  displayCards(allIssues);
 }
 
+
+
+// Display all cards to dashboard
 
 function displayCards(cards) {
   issuesCards.innerHTML = "";
@@ -77,15 +101,13 @@ function displayCards(cards) {
               .join("")}
         </div>
 
-
-
         <p class="text-xs text-gray-500">${card.author}</p>
         <p class="text-xs text-gray-400">${card.createdAt}</p>
 
     </div>
     
     `;
-
+    
     issuesCards.appendChild(issueCard);
   }
 };
@@ -93,18 +115,10 @@ function displayCards(cards) {
 
 let allIssues = [];
 
-async function loadCards() {
-  const res = await fetch(
-    "https://phi-lab-server.vercel.app/api/v1/lab/issues"
-  );
-  const data = await res.json();
 
-  allIssues = data.data;
 
-  allCount.innerText = allIssues.length + " Issues";
 
-  displayCards(allIssues);
-}
+// button toggling
 
 const tabs = document.querySelectorAll(".tab-btn");
 
@@ -143,5 +157,7 @@ searchInput.addEventListener("keyup", async () => {
   displayCards(data.data);
 
 });
+
+
 
 
