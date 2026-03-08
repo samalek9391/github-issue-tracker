@@ -1,7 +1,5 @@
 const signBtn = document.getElementById("signin-btn");
 
-
-
 signBtn.addEventListener("click", function () {
   const userName = document.getElementById("username").value;
   const password = document.getElementById("password").value;
@@ -17,9 +15,9 @@ signBtn.addEventListener("click", function () {
   }
 });
 
+
 const issuesCards = document.getElementById("issues-cards");
 const allCount = document.getElementById("all-count");
-// console.log(issuesCards);
 
 async function loadCards() {
   const res = await fetch(
@@ -138,18 +136,12 @@ loadCards();
 
 const searchInput = document.getElementById("search-input");
 
-searchInput.addEventListener("keyup", async function () {
-
-  const text = this.value;
-
-  const res = await fetch(
-    `https://phi-lab-server.vercel.app/api/v1/lab/issues/search?q=${text}`
-  );
-
+searchInput.addEventListener("keyup", async () => {
+  const text = searchInput.value;
+  const res = await fetch(`https://phi-lab-server.vercel.app/api/v1/lab/issues/search?q=${text}`);
   const data = await res.json();
-
   displayCards(data.data);
-});
 
+});
 
 
